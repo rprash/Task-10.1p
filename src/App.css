@@ -1,0 +1,53 @@
+.ui.menu .active.item{
+color: black !important;
+    font-weight: 600 !important;
+    background-color: transparent !important;
+}
+
+.ui.secondary.menu{
+  background-color:rgba(0,0,0,.05) !important;
+}
+
+.ui.menu .item{
+color: gray !important;
+font-weight: 600 !important;
+}
+
+.task_cont{
+  margin: 20px 20px;
+  display: flex;
+}
+
+.task_form{
+  display: flex;
+  margin-left: 20px;
+}
+
+.ui.form .field {
+  margin-right: 20px !important;
+}
+
+.title_input input{
+  margin-left: 44px !important;
+}
+
+label{
+  margin-right: 20px !important;
+  margin-left: 20px !important;
+}
+
+.field_row{
+  margin: 20px 0px;
+}
+
+.settings_section{
+  margin-left: 20px;
+}
+
+.worker_input input{
+  margin-left: 10px !important;
+}
+
+.ui.button{
+  margin-left: 20px !important;
+}
