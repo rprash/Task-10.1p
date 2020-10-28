@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Form, Radio } from 'semantic-ui-react'
+import { Button, Form, Radio, Checkbox } from 'semantic-ui-react'
 import Header from './components/Header';
 import './App.css';
 import Heading from './components/Heading';
@@ -13,6 +13,8 @@ const App = () => {
   const [date, setDate] = useState('');
   const [reward, setReward] = useState('');
   const [workers, setWorkers] = useState('');
+  const [trueOrFalse, setTrueOrFalse] = useState(null);
+  const [sentence, setSentence] = useState('');
 
   return (
     <div className="App">
@@ -54,10 +56,54 @@ const App = () => {
       <Form.Input value={desc} onChange={(e) => { setDesc(e.target.value) }} className='field_row' label='Description' placeholder='Enter task description' />
       <Form.Input value={date} onChange={(e) => { setDate(e.target.value) }} className='field_row' label='Expiry Date' />
       <Heading heading='Setting up your task' />
-      <div className='settings_section'>{taskType == 'Choice Task' ? 'Choice Task (Select one or several answers)'
+      <div className='settings_section'>{taskType == 'Decision-Making Task' ?
+        <div className="task_cont">
+          Provide true/false answer:
+                <Form className="task_form">
+            <Form.Field>
+              <Radio
+                label='True'
+                name='radioGroup'
+                value='True'
+                checked={trueOrFalse === 'True'}
+                onChange={(e, { value }) => { setTrueOrFalse(value) }}
+              />
+            </Form.Field>
+            <Form.Field>
+              <Radio
+                label='False'
+                name='radioGroup'
+                value='False'
+                checked={trueOrFalse === 'False'}
+                onChange={(e, { value }) => { setTrueOrFalse(value) }}
+              />
+            </Form.Field>
+          </Form>
+        </div>
         :
-        taskType == 'Decision-Making Task' ? 'Decision-Making Task (Provide True/False answers)'
-          : 'Sentence-Level Task (Provide sentences as answers)'
+        taskType == 'Choice Task' ?
+          <div className="task_cont">
+            Select one or more options:
+              <Form className="task_form">
+              <Form.Field>
+                <Checkbox label='Option 1' />
+              </Form.Field>
+              <Form.Field>
+                <Checkbox label='Option 2' />
+              </Form.Field>
+              <Form.Field>
+                <Checkbox label='Option 3' />
+              </Form.Field>
+            </Form>
+          </div>
+          : <div className="task_cont flex">
+            Provide your answer:
+            <Form className="task_form">
+              <Form.Field>
+                <Form.Input value={sentence} onChange={(e) => { setSentence(e.target.value) }} className='field_row' />
+              </Form.Field>
+            </Form>
+          </div>
       }</div>
       <Heading heading='Worker Requirement' />
       <div className="task_cont">
@@ -107,6 +153,8 @@ const App = () => {
           setDate('');
           setReward('');
           setWorkers('');
+          setSentence('');
+          setTrueOrFalse(null);
         }
         }
       >Save</Button>

@@ -51,3 +51,8 @@ label{
 .ui.button{
   margin-left: 20px !important;
 }
+
+.flex{
+  display: flex;
+  align-items: center;
+}
